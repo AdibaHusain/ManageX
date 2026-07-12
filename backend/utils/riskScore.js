@@ -1,5 +1,5 @@
 const Allocation = require("../models/Allocation");
-const AuditCycle = require("../models/AuditCycle"); // adjust name if different
+const AuditCycle = require("../models/AuditCycle");
 
 const WEIGHTS = {
   overdueHistory: 0.4,
@@ -13,14 +13,16 @@ const normalize = (value, cap) => {
 };
 
 // (a) Employee ka past overdue-return count
+// status "Overdue" already ek explicit value hai schema mein — direct count karo
 const getEmployeeOverdueCount = async (employeeId) => {
   return Allocation.countDocuments({
-    employee: employeeId,
+    allocatedTo: employeeId,
     status: "Overdue",
   });
 };
 
 // (b) Asset ka audit-mismatch history (Missing/Damaged)
+// NOTE: field names AuditCycle schema paste karne ke baad confirm karunga
 const getAssetAuditMismatchCount = async (assetId) => {
   const result = await AuditCycle.aggregate([
     { $unwind: "$assetChecks" },
@@ -35,14 +37,16 @@ const getAssetAuditMismatchCount = async (assetId) => {
   return result.length ? result[0].mismatchCount : 0;
 };
 
-// (c) Asset kitne din se allocated hai bina return ke
+// (c) Asset kitne din se allocated hai bina return ke — allocatedDate field use karo
 const getAssetAllocationDurationDays = async (assetId) => {
-  const active = await Allocation.findOne({ asset: assetId, status: { $in: ["Active", "Overdue"] } });
+  const active = await Allocation.findOne({
+    asset: assetId,
+    status: { $in: ["Active", "Overdue"] },
+  });
   if (!active) return 0;
   return Math.floor((Date.now() - new Date(active.allocatedDate)) / 86400000);
 };
 
-// Master function
 const calculateRiskScore = async ({ employeeId, assetId }) => {
   const overdueCount = employeeId ? await getEmployeeOverdueCount(employeeId) : 0;
   const mismatchCount = assetId ? await getAssetAuditMismatchCount(assetId) : 0;

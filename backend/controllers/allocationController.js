@@ -57,7 +57,7 @@ const requestTransfer = async (req, res, next) => {
 
 const { calculateRiskScore } = require("../utils/riskScore");
 
-exports.getEmployeeRisk = async (req, res) => {
+const getEmployeeRisk = async (req, res) => {
   try {
     const risk = await calculateRiskScore({ employeeId: req.params.employeeId });
     res.json(risk);
@@ -148,4 +148,8 @@ const getAssetAllocationHistory = async (req, res, next) => {
   } catch (err) { next(err); }
 };
 
-module.exports = { allocateAsset, requestTransfer, approveTransfer, rejectTransfer, returnAsset, getOverdueAllocations, getAssetAllocationHistory };
+module.exports = {
+  allocateAsset, requestTransfer, approveTransfer, rejectTransfer,
+  returnAsset, getOverdueAllocations, getAssetAllocationHistory,
+  getEmployeeRisk,   // ⬅️ ye add karo
+};

@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const allocationController = require("../controllers/allocationController"); // ⬅️ ye line honi chahiye
+
 const {
   allocateAsset, requestTransfer, approveTransfer, rejectTransfer,
   returnAsset, getOverdueAllocations, getAssetAllocationHistory,
