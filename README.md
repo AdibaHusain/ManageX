@@ -7,8 +7,6 @@
 ![USP](https://img.shields.io/badge/USP-Predictive%20Risk%20Intelligence-success)
 ![Team](https://img.shields.io/badge/team-2%20members-purple)
 
-**Built by [Your Name] & Adiba**
-
 </div>
 
 ---
