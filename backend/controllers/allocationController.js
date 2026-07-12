@@ -55,6 +55,17 @@ const requestTransfer = async (req, res, next) => {
   } catch (err) { next(err); }
 };
 
+const { calculateRiskScore } = require("../utils/riskScore");
+
+exports.getEmployeeRisk = async (req, res) => {
+  try {
+    const risk = await calculateRiskScore({ employeeId: req.params.employeeId });
+    res.json(risk);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
 const approveTransfer = async (req, res, next) => {
   try {
     const transferRequest = await TransferRequest.findById(req.params.id);

@@ -14,5 +14,6 @@ router.patch("/transfer-request/:id/reject", authorize("Admin", "AssetManager", 
 router.patch("/:id/return", authorize("Admin", "AssetManager"), returnAsset);
 router.get("/overdue", getOverdueAllocations);
 router.get("/asset/:assetId", getAssetAllocationHistory);
+router.get("/risk/employee/:employeeId", allocationController.getEmployeeRisk);
 
 module.exports = router;
