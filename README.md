@@ -2,11 +2,6 @@
 
 ### A "real ERP"-style Asset Management System — built lean, built smart.
 
-![Status](https://img.shields.io/badge/status-hackathon--build-orange)
-![Type](https://img.shields.io/badge/type-Asset%20Management%20ERP-blue)
-![USP](https://img.shields.io/badge/USP-Predictive%20Risk%20Intelligence-success)
-![Team](https://img.shields.io/badge/team-2%20members-purple)
-
 </div>
 
 ---
