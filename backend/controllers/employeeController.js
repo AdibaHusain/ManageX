@@ -1,4 +1,41 @@
 const User = require("../models/User");
+const jwt = require("jsonwebtoken");
+// bcrypt yahan import karne ki zaroorat nahi — model khud handle karta hai
+
+const generateToken = (id) => jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "7d" });
+
+const signupUser = async (req, res, next) => {
+  try {
+    const { name, email, password } = req.body;
+    const exists = await User.findOne({ email });
+    if (exists) return res.status(400).json({ message: "Email already registered" });
+
+    // ⬅️ plain password hi bhejo, pre("save") hook khud hash karega
+    const user = await User.create({ name, email, password, role: "Employee" });
+
+    res.status(201).json({
+      _id: user._id, name: user.name, email: user.email, role: user.role,
+      token: generateToken(user._id),
+    });
+  } catch (err) { next(err); }
+};
+
+const loginUser = async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+    if (!user) return res.status(401).json({ message: "Invalid credentials" });
+
+    const isMatch = await user.matchPassword(password); // ⬅️ model ka apna method use karo
+    if (!isMatch) return res.status(401).json({ message: "Invalid credentials" });
+
+    res.json({
+      _id: user._id, name: user.name, email: user.email, role: user.role,
+      token: generateToken(user._id),
+    });
+  } catch (err) { next(err); }
+};
+
 
 const getEmployees = async (req, res, next) => {
   try {
@@ -35,5 +72,4 @@ const updateEmployee = async (req, res, next) => {
   } catch (err) { next(err); }
 };
 
-module.exports = { getEmployees, promoteEmployee, updateEmployee };
-
+module.exports = { loginUser, signupUser, getEmployees, promoteEmployee, updateEmployee };
