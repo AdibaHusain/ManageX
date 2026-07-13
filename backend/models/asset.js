@@ -25,7 +25,6 @@ const assetSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-assetSchema.index({ assetTag: 1 });
 assetSchema.index({ serialNumber: 1 });
 assetSchema.index({ status: 1 });
 

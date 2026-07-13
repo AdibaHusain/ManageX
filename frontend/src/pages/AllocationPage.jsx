@@ -5,7 +5,6 @@ export default function AllocationPage() {
     <div>
       <h2>Asset Allocation</h2>
       <AllocationForm />
-      {/* apna existing allocation history table yahan neeche add kar sakte ho */}
     </div>
   );
 }
