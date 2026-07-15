@@ -58,23 +58,23 @@ Statistical + weighted → **fast, explainable, demo-safe.** No ML, no regressio
 
 ---
 
-## 🖥️ Where It Surfaces (Zero New Screens)
+## Where It Surfaces (Zero New Screens)
 
 <table>
 <tr>
 <td width="50%" valign="top">
 
-### 1️⃣ Allocation Screen
+### Allocation Screen
 When assigning an asset to a high-risk employee:
 
-> ⚠️ **"This employee already has 2 assets overdue."**
+> **"This employee already has 2 assets overdue."**
 
 A soft, non-blocking warning nudges better decisions at the point of action.
 
 </td>
 <td width="50%" valign="top">
 
-### 2️⃣ Audit Screen
+### Audit Screen
 When an audit cycle starts, risky assets auto-sort to the top:
 
 > 🔍 **"Check these first — historically flagged."**
@@ -99,21 +99,21 @@ This is the single differentiator that separates AssetFlow from a typical CRUD-b
 
 ---
 
-## 🎁 Bonus: Smart Slot Suggestion
+## Bonus: Smart Slot Suggestion
 
 *(Optional — only if time permits)*
 
 On **Resource Booking**, if a slot is rejected due to overlap:
 
-> ❌ 9:30–10:30 unavailable → ✅ **"Try 10:00–11:00 instead."**
+> 9:30–10:30 unavailable → **"Try 10:00–11:00 instead."**
 
 A small function layered on the existing overlap-check logic — but delivers an instant **"wow"** in live demos.
 
-> ⚠️ **Scope discipline:** One sharp feature beats three half-baked ones. This stays optional.
+> **Scope discipline:** One sharp feature beats three half-baked ones. This stays optional.
 
 ---
 
-## 🗂️ Modules & Screens
+## Modules & Screens
 
 > _Update this list to match your actual 10 screens_
 
@@ -127,21 +127,18 @@ A small function layered on the existing overlap-check logic — but delivers an
 
 ---
 
-## ⚙️ Tech Stack
-
-> _Fill in your actual stack_
+## Tech Stack
 
 | Layer | Technology |
 |:--|:--|
-| Frontend | `TBD` |
-| Backend | `TBD` |
-| Database | `TBD` |
-| Auth | `TBD` |
-| Hosting | `TBD` |
+| Frontend | HTML CSS JAVASCRIPT REACT|
+| Backend | NODEJS EXPRESS JS |
+| Database | MONGODB |
+| Auth | JWT |
 
 ---
 
-## 🧮 Risk Score Engine
+## Risk Score Engine
 
 ```text
 RiskScore = w1 × (employee_overdue_count)
@@ -154,7 +151,7 @@ RiskScore = w1 × (employee_overdue_count)
 - Lives as **one reusable utility function**, called from two UI touchpoints
 
 <details>
-<summary>🧑‍💻 Example pseudocode (click to expand)</summary>
+<summary> Example pseudocode (click to expand)</summary>
 
 ```js
 function calculateRiskScore({ overdueCount, mismatchCount, daysAllocated }) {
@@ -177,37 +174,19 @@ function calculateRiskScore({ overdueCount, mismatchCount, daysAllocated }) {
 
 ---
 
-## 🚀 Build Roadmap
-
-- [ ] **Step 1** — Core CRUD: Assets, Employees, Allocation, Return
-- [ ] **Step 2** — Audit module (basic Missing/Damaged flagging)
-- [ ] **Step 3** — Risk Score utility function (plug into existing data)
-- [ ] **Step 4** — Surface risk score → Allocation screen warning
-- [ ] **Step 5** — Surface risk score → Audit screen priority sort
-- [ ] **Step 6** *(optional)* — Smart slot suggestion on Resource Booking
-- [ ] **Step 7** — Polish: Dashboard, UI cleanup, demo rehearsal
-
-<div align="center">
-
-`Step 1 ▓▓▓▓▓▓▓▓▓▓ → Step 7` — designed to safely fit an 8-hour build window
-
-</div>
-
----
-
-## 👥 Team
+## Team
 
 <div align="center">
 
 | | |
 |:--:|:--:|
-| 🧑‍💻 **Adiba** | 🧑‍💻 **Amrita** |
+| **Adiba** | **Amrita** |
 
 </div>
 
 ---
 
-## 🏆 Why This Stands Out
+## Why This Stands Out
 
 > AssetFlow doesn't add complexity for the sake of looking impressive.
 
